@@ -1,14 +1,21 @@
-const express = require('express.js')
-const app = express()
+import http from "http";
+import { reqType } from "./requestHandler.js";
 
-app.get('/' , (req,res)=>{
+const HOST = 'localhost';
+const PORT = 3000;
 
-// do stuff for the home page 
+
+const server = http.createServer((req,res)=>{
+    const request = new reqType(req);
+   if(request.verb == "GET"){
+
+   }
+   if(request.verb == "POST"){
+    
+   }
 
 })
 
-
-app.get('/login' , (req,res)=>{
-
-    // initiate login
+server.listen(PORT ,HOST,()=>{
+    console.log(`Listening on http://${HOST}:${PORT}/`)
 })
