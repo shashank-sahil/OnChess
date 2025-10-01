@@ -12,7 +12,9 @@ const oauth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
   REDIRECT_URI
+
 );
+
 
 // generate a url that asks permissions for Blogger and Google Calendar scopes
 const scopes = [
@@ -41,6 +43,7 @@ export function getAuthClient() {
 
 
 export function getTokens(code, callback) {
+
   const postData = querystring.stringify({
     code,
     client_id: CLIENT_ID,
@@ -74,7 +77,7 @@ export function getTokens(code, callback) {
 }
 
 
-export function parseJwt (token) {
+export function parseJwt(token) {
   const base64Url = token.split('.')[1]; // payload part
   const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   const buff = Buffer.from(base64, 'base64');
